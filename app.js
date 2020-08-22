@@ -19,8 +19,8 @@ app.post("/",function(req,res){
         email_address: email,
         status: "subscribed",
         merge_fields:{
-          FNAME: firstName,
-          LNAME: lastName
+          FNAME: first,
+          LNAME: last
         }
       }
     ]
@@ -30,9 +30,10 @@ const jsonData=JSON.stringify(data);
   const url="https://us17.api.mailchimp.com/3.0/lists/02f3670d59"
    const options = {
     method: "post",
-    auth: "Esha:d0d0579f7dee3d1629dba08d648c4f9a-us17"
+    auth: "Esha:e6abe8b45faf7b4683bf6e394089baff-us17"
   }
 const request = https.request(url,options,function(response){
+  console.log(response)
     response.on("data",function(data){
       if(response.statusCode===200){
           res.sendFile(__dirname+"/success.html");
